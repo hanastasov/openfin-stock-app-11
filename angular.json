@@ -12,7 +12,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "vendorSourceMap": false,
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/index.ts",
@@ -25,8 +24,7 @@
             "styles": [
               "src/index.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
