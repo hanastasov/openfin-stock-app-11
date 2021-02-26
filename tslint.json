@@ -1,0 +1,38 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "indent": [true, "spaces"],
+    "variable-name": [true, "allow-leading-underscore"],
+    "interface-name": [true, "always-prefix"],
+    "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
+    "no-empty": false,
+    "no-bitwise": false,
+    "no-object-literal-type-assertion": false,
+    "no-string-literal": false,
+    "no-trailing-whitespace": false,
+    "no-submodule-imports": [false],
+    "max-classes-per-file": false,
+    "prefer-object-spread": false,
+    "no-console": false,
+    "prefer-conditional-expression": false,
+    "prefer-for-of": false,
+    "arrow-parens": false,
+    "align": false,
+    "only-arrow-functions": false,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "member-access": false,
+    "member-ordering": false,
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "directive-class-suffix": true,
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+  }
+}
