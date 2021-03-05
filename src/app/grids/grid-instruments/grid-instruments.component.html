@@ -16,8 +16,15 @@
     </igx-nav-drawer>
 
     <main igxFlex >
-        <igx-navbar title="IG Grid with FDC3 ViewInstrument Intent" actionButtonIcon="menu"
-        [isActionButtonVisible]="true" (click)="drawerToggle()" >
+        <igx-navbar
+            title="IG Grid with FDC3 ViewInstrument Intent"
+            actionButtonIcon="menu"
+            [isActionButtonVisible]="true"
+            (action)="drawerToggle()" >
+        <!-- <app-utils-menu
+            (themeChange)="themeChange()"
+            (displayDensityChange)="displayDensityChange($event)">
+        </app-utils-menu> -->
         </igx-navbar>
 
         <igx-grid #grid class="grid"

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
 
 // required import for initalizing Fdc3DataAdapter:
 import * as openfinFdc3 from "openfin-fdc3";
@@ -12,26 +12,32 @@ import { Fdc3Instrument } from "igniteui-angular-fdc3";
 import { Fdc3Message } from "igniteui-angular-fdc3"; // for receiving ViewChart message
 
 // required imports for working with IgxGridComponent
-import { SortingDirection  } from "igniteui-angular";
+import { DisplayDensity, SortingDirection  } from "igniteui-angular";
 import { IgxGridComponent  } from "igniteui-angular";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
+import { UtilsMenuComponent } from "../../utils-menu/utils-menu.component";
 
 @Component({
     selector: "app-root",
     templateUrl: "./grid-positions.component.html",
     styleUrls:  ["./grid-positions.component.scss"]
 })
-export class GridPositionsComponent implements AfterViewInit {
+export class GridPositionsComponent implements OnInit, AfterViewInit {
 
     public title = "IG Grid - FDC3 ViewPosition & ViewPortfolio";
     public dataSource: any[];
     public FDC3adapter: Fdc3DataAdapter;
+    public darkTheme: boolean;
+    public displayDensity: DisplayDensity;
 
     @ViewChild("grid", { static: true })
     public grid: IgxGridComponent;
 
     @ViewChild(IgxNavigationDrawerComponent, { static: true })
     public drawer: IgxNavigationDrawerComponent;
+
+    @ViewChild(UtilsMenuComponent, { static: true })
+    public utilsMenu: UtilsMenuComponent;
 
     public selected = "TSLA";
 
@@ -54,6 +60,11 @@ export class GridPositionsComponent implements AfterViewInit {
 
     constructor() {
         document.title = this.title;
+    }
+
+    public ngOnInit() {
+        // this.displayDensity = this.utilsMenu.displayDensity;
+        // this.darkTheme = this.utilsMenu.darkTheme;
     }
 
     public async InitializeFDC3(): Promise<void> {
@@ -190,5 +201,13 @@ export class GridPositionsComponent implements AfterViewInit {
             this.FDC3adapter.removeStockPosition(i);
         }
         this.grid.data = this.FDC3adapter.stockPositions;
+    }
+
+    public themeChange() {
+      this.darkTheme = !this.darkTheme;  
+    }
+
+    public displayDensityChange(event: DisplayDensity) {
+      this.displayDensity = event;
     }
 }

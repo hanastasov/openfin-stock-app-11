@@ -1,0 +1,11 @@
+<button class="button" igxButton="raised" [igxToggleAction]="dropdown" [igxToggleOutlet]="outlet" [igxDropDownItemNavigation]="dropdown">Display Density</button>
+<igx-drop-down #dropdown (onSelection)="onSelection($event)">
+    <igx-drop-down-item *ngFor="let density of densityOptions" [value]="density">
+        {{ density }}
+    </igx-drop-down-item>
+</igx-drop-down>
+<button igxButton="icon" (click)="toggleTheme()">
+    <igx-icon>palette</igx-icon>
+</button>
+
+<div igxOverlayOutlet #outlet="overlay-outlet"></div>

@@ -10,9 +10,10 @@ import { Fdc3Instrument } from "igniteui-angular-fdc3"; // for sending ViewChart
 import { Fdc3Message } from "igniteui-angular-fdc3"; // for receiving ViewChart message
 
 // required imports for working with IgxGridComponent
-import { SortingDirection  } from "igniteui-angular";
+import { DisplayDensity  } from "igniteui-angular";
 import { IgxGridComponent  } from "igniteui-angular";
 import { IgxNavigationDrawerComponent } from "igniteui-angular";
+import { UtilsMenuComponent } from "../../utils-menu/utils-menu.component";
 
 @Component({
     selector: "app-root",
@@ -31,7 +32,13 @@ export class GridInstrumentsComponent implements AfterViewInit {
     @ViewChild(IgxNavigationDrawerComponent, { static: true })
     public drawer: IgxNavigationDrawerComponent;
 
+    @ViewChild(UtilsMenuComponent, { static: true })
+    public utilsMenu: UtilsMenuComponent;
+
     public selected = "GOOG";
+
+    public darkTheme: boolean;
+    public displayDensity: DisplayDensity;
 
     public viewInstrumentItems: any[] = [
         { text: "TSLA", symbol: "TSLA" },
@@ -42,6 +49,11 @@ export class GridInstrumentsComponent implements AfterViewInit {
     ];
     constructor() {
         document.title = this.title;
+    }
+
+    public ngOnInit() {
+        this.displayDensity = this.utilsMenu.displayDensity;
+        this.darkTheme = this.utilsMenu.darkTheme;
     }
 
     public async InitializeFDC3(): Promise<void> {
@@ -159,6 +171,14 @@ export class GridInstrumentsComponent implements AfterViewInit {
         // this.drawer.width = "180px";
         this.drawer.pin = true;
         this.drawer.toggle();
+    }
+
+    public themeChange() {
+        this.darkTheme = !this.darkTheme;  
+    }
+
+    public displayDensityChange(event: DisplayDensity) {
+        this.displayDensity = event;
     }
 
 }

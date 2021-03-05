@@ -12,14 +12,19 @@ import {
 import { IgxGridModule } from "igniteui-angular";
 
 import { GridPositionsComponent } from "./grid-positions.component";
+import { UtilsMenuModule } from "../../utils-menu/utils-menu.module";
+import { UtilsMenuComponent } from "../../utils-menu/utils-menu.component";
 
 @NgModule({
     declarations: [
-        GridPositionsComponent
+        GridPositionsComponent,
+        UtilsMenuComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
+
+        UtilsMenuModule,
 
         IgxGridModule,
 
